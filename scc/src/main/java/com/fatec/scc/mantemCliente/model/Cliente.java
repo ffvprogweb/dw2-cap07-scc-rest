@@ -135,6 +135,12 @@ public class Cliente {
 				&& Objects.equals(dataNascimento, other.dataNascimento) && Objects.equals(endereco, other.endereco)
 				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(sexo, other.sexo);
 	}
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", cpf=" + cpf + ", nome=" + nome + ", dataNascimento=" + dataNascimento
+				+ ", dataCadastro=" + dataCadastro + ", sexo=" + sexo + ", cep=" + cep + ", endereco=" + endereco
+				+ ", complemento=" + complemento + "]";
+	}
 	
 		
 }
