@@ -2,6 +2,8 @@ package com.fatec.scc.mantemCliente.model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -115,6 +117,24 @@ public class Cliente {
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 		this.dataCadastro = dataAtual.toString(fmt);
 	}
-	//equals e toString omitidos.	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cep, complemento, cpf, dataCadastro, dataNascimento, endereco, id, nome, sexo);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(cep, other.cep) && Objects.equals(complemento, other.complemento)
+				&& Objects.equals(cpf, other.cpf) && Objects.equals(dataCadastro, other.dataCadastro)
+				&& Objects.equals(dataNascimento, other.dataNascimento) && Objects.equals(endereco, other.endereco)
+				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(sexo, other.sexo);
+	}
+	
 		
 }
