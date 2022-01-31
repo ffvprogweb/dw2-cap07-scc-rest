@@ -27,7 +27,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	Logger logger = LogManager.getLogger(JWTAuthenticationFilter.class);
     
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
-		logger.info(">>>>>> JWT Authentication filter chamado => ");
+		logger.info(">>>>>> JWT Authentication filter chamado ");
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
@@ -35,7 +35,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
-       logger.info(">>>>>> tentativa de autenticacao => ");
+       logger.info(">>>>>> tentativa de autenticacao ");
     	try {
             ApplicationUser creds = new ObjectMapper().readValue(req.getInputStream(), ApplicationUser.class);
 
@@ -47,7 +47,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             );
             
         } catch (IOException e) {
-        	logger.info(">>>>>> erro na tentativa de autenticacao => ");
+        	logger.info(">>>>>> erro na tentativa de autenticacao => " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -57,7 +57,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
-    	logger.info(">>>>>> sucesso na tentativa de autenticacao => ");
+    	logger.info(">>>>>> sucesso na tentativa de autenticacao ");
     	String username = ((User) auth.getPrincipal()).getUsername();
     	logger.info(">>>>>> user => " + username);
     	String token = jwtUtil.generateToken(username);
