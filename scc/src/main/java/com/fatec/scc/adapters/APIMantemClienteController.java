@@ -53,7 +53,7 @@ public class APIMantemClienteController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Cliente>> consultaTodos() {
+	public ResponseEntity<?> consultaTodos() {
 		logger.info(">>>>>> 1. controller consulta todos chamado");
 		List<Cliente> listaDeClientes = new ArrayList<Cliente>();
 		servico.consultaTodos().forEach(listaDeClientes::add);
