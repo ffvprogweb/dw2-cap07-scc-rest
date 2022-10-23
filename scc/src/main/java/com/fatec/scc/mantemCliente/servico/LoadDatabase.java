@@ -27,9 +27,9 @@ class LoadDatabase {
 		return args -> {
 			Cliente cliente1 = new Cliente("Miguel Soares", "10/02/1960", "M", "99504993052", "04280130", "2983");
 			log.info("Preloading - cliente => " + mantemCliente.save(cliente1));
-
 			Cliente cliente2 = new Cliente("Marcos Silva", "04/10/1974", "M", "43011831084", "08545160", "2983");
 			log.info("Preloading " + mantemCliente.save(cliente2));
+			
 			ApplicationUser user = new ApplicationUser();
 			user.setUsername("jose");
 			user.setPassword("123");
