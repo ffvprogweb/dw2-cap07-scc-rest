@@ -90,9 +90,8 @@ public class APIMantemClienteController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Cliente> update(@RequestBody @Valid Cliente clienteModificado) {// throws
-		// URISyntaxException
-		// {
+	public ResponseEntity<Cliente> update(@RequestBody @Valid Cliente clienteModificado) {
+		
 		logger.info(">>>>>> 1. controller alterar - put iniciado id => " + clienteModificado.getId());
 		Cliente cliente = servico.altera(clienteModificado);
 		if (cliente != null) {

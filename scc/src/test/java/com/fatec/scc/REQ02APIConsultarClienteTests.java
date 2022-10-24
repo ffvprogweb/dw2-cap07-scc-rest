@@ -2,8 +2,6 @@ package com.fatec.scc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -18,15 +16,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.fatec.scc.mantemCliente.model.Cliente;
-import com.fatec.scc.mantemCliente.ports.MantemClienteRepository;
+
 import com.fatec.scc.seguranca.model.ApplicationUser;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class REQ02APIConsultarClienteTests {
 	@Autowired
 	private TestRestTemplate testRestTemplate;
-	@Autowired
-	private MantemClienteRepository clienteRepository;
+	
 	Logger log = LogManager.getLogger(this.getClass());
 
 	@Test
@@ -51,7 +48,7 @@ class REQ02APIConsultarClienteTests {
 		//entao retorna todos os clientes cadastrados
 		Cliente[] listaDeClientes = resposta.getBody();
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
-		assertEquals(2,listaDeClientes.length);
+		assertTrue(listaDeClientes.length>0);
 	}
 
 }
